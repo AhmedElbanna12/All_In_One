@@ -1,54 +1,170 @@
 ﻿@model AllinOne.ViewModels.RegisterViewModel
 
-<h2>Register</h2>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إنشاء حساب — منصة المنح العربية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/register.css" />
+</head>
+<body>
 
-<form asp-action="Register" method="post">
+    <div class="auth-wrapper">
 
-    <div>
-        <label>Name</label>
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
+        <!-- LEFT: SIDE PANEL -->
+        <div class="auth-side">
+            <div class="side-icon-big">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <div class="side-welcome">
+                <h2>انضم إلى <span>منصة المنح</span></h2>
+                <p>سجّل حسابك مجاناً وابدأ رحلتك نحو منحتك الدراسية المثالية</p>
+            </div>
+            <div class="side-steps">
+                <div class="side-step">
+                    <div class="step-num">1</div>
+                    <div class="step-txt">أنشئ حسابك في ثوانٍ</div>
+                </div>
+                <div class="side-step">
+                    <div class="step-num">2</div>
+                    <div class="step-txt">تصفّح مئات المنح المتاحة</div>
+                </div>
+                <div class="side-step">
+                    <div class="step-num">3</div>
+                    <div class="step-txt">تواصل مع خبراء معتمدين</div>
+                </div>
+            </div>
+            <div class="side-login-link">
+                لديك حساب بالفعل؟ <a href="/Account/Login">سجّل دخولك</a>
+            </div>
+        </div>
+
+        <!-- RIGHT: FORM PANEL -->
+        <div class="auth-form-panel">
+            <div class="form-header">
+                <a class="brand-link" href="/">
+                    <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <span>منصة المنح العربية</span>
+                </a>
+                <h3>إنشاء حساب جديد ✨</h3>
+                <p>أدخل بياناتك للبدء في رحلتك الأكاديمية</p>
+            </div>
+
+            <form asp-action="Register" method="post" class="register-form" novalidate>
+
+                <!-- Name + Age -->
+                <div class="fields-grid">
+                    <div class="field-group">
+                        <label class="field-label" asp-for="Name">
+                            <i class="fas fa-user"></i> الاسم الكامل <span class="required">*</span>
+                        </label>
+                        <div class="field-wrap">
+                            <input asp-for="Name" type="text" placeholder="أدخل اسمك الكامل" autocomplete="name" />
+                            <i class="field-icon fas fa-user"></i>
+                        </div>
+                        <span asp-validation-for="Name" class="validation-msg"></span>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label" asp-for="Age">
+                            <i class="fas fa-calendar"></i> العمر <span class="required">*</span>
+                        </label>
+                        <div class="field-wrap">
+                            <input asp-for="Age" type="number" placeholder="مثال: 22" min="10" max="80" />
+                            <i class="field-icon fas fa-calendar-alt"></i>
+                        </div>
+                        <span asp-validation-for="Age" class="validation-msg"></span>
+                    </div>
+                </div>
+
+                <!-- Country + Address -->
+                <div class="fields-grid">
+                    <div class="field-group">
+                        <label class="field-label" asp-for="Country">
+                            <i class="fas fa-globe"></i> الدولة <span class="required">*</span>
+                        </label>
+                        <div class="field-wrap">
+                            <input asp-for="Country" type="text" placeholder="مثال: المملكة العربية السعودية" />
+                            <i class="field-icon fas fa-globe"></i>
+                        </div>
+                        <span asp-validation-for="Country" class="validation-msg"></span>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label" asp-for="Address">
+                            <i class="fas fa-map-marker-alt"></i> العنوان
+                        </label>
+                        <div class="field-wrap">
+                            <input asp-for="Address" type="text" placeholder="المدينة أو المنطقة" />
+                            <i class="field-icon fas fa-map-marker-alt"></i>
+                        </div>
+                        <span asp-validation-for="Address" class="validation-msg"></span>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="field-group">
+                    <label class="field-label" asp-for="Email">
+                        <i class="fas fa-envelope"></i> البريد الإلكتروني <span class="required">*</span>
+                    </label>
+                    <div class="field-wrap">
+                        <input asp-for="Email" type="email" placeholder="example@domain.com" autocomplete="email" />
+                        <i class="field-icon fas fa-envelope"></i>
+                    </div>
+                    <span asp-validation-for="Email" class="validation-msg"></span>
+                </div>
+
+                <!-- Password -->
+                <div class="field-group">
+                    <label class="field-label" asp-for="Password">
+                        <i class="fas fa-lock"></i> كلمة المرور <span class="required">*</span>
+                    </label>
+                    <div class="field-wrap">
+                        <input asp-for="Password" type="password" placeholder="8 أحرف على الأقل" id="regPw" autocomplete="new-password" />
+                        <i class="field-icon fas fa-lock"></i>
+                        <button type="button" class="toggle-pw" onclick="togglePw('regPw','regPwBtn')" id="regPwBtn">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="pw-strength" id="pwStrength">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <span asp-validation-for="Password" class="validation-msg"></span>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="field-group">
+                    <label class="field-label" asp-for="ConfirmPassword">
+                        <i class="fas fa-lock"></i> تأكيد كلمة المرور <span class="required">*</span>
+                    </label>
+                    <div class="field-wrap">
+                        <input asp-for="ConfirmPassword" type="password" placeholder="أعد إدخال كلمة المرور" id="regPwConfirm" autocomplete="new-password" />
+                        <i class="field-icon fas fa-lock"></i>
+                        <button type="button" class="toggle-pw" onclick="togglePw('regPwConfirm','regPwConfirmBtn')" id="regPwConfirmBtn">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span asp-validation-for="ConfirmPassword" class="validation-msg"></span>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-user-plus"></i> إنشاء الحساب
+                </button>
+
+                <div class="form-footer">
+                    لديك حساب بالفعل؟ <a href="/Account/Login">سجّل دخولك الآن</a>
+                </div>
+
+            </form>
+        </div>
+
     </div>
-
-    <div>
-        <label>Age</label>
-        <input asp-for="Age" />
-        <span asp-validation-for="Age"></span>
-    </div>
-
-    <div>
-        <label>Country</label>
-        <input asp-for="Country" />
-        <span asp-validation-for="Country"></span>
-    </div>
-
-    <div>
-        <label>Address</label>
-        <input asp-for="Address" />
-        <span asp-validation-for="Address"></span>
-    </div>
-
-    <div>
-        <label>Email</label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-    </div>
-
-    <div>
-        <label>Password</label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-
-    <div>
-        <label>Confirm Password</label>
-        <input asp-for="ConfirmPassword" />
-        <span asp-validation-for="ConfirmPassword"></span>
-    </div>
-
-    <button type="submit">Register</button>
-</form>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+</body>

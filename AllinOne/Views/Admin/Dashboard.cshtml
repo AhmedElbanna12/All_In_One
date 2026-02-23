@@ -1,95 +1,52 @@
 ﻿@{
-    ViewData["Title"] = "لوحة تحكم الأدمن";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="container mt-5">
+<h2>@ViewData["Title"]</h2>
 
-    <h2 class="mb-4 text-center">لوحة تحكم المدير</h2>
+<p>مرحبًا بك في لوحة تحكم الأدمن. من هنا يمكنك إدارة المنح الدراسية بسهولة.</p>
 
-    <div class="row g-4">
-
-        <!-- عدد المستخدمين -->
-        <div class="col-md-3">
-            <div class="card text-white bg-primary shadow">
-                <div class="card-body text-center">
-                    <h5 class="card-title">عدد المستخدمين</h5>
-                    <h3>120</h3>
-                </div>
+<div class="row mt-4">
+    <!-- إدارة المنح -->
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">قائمة المنح</h5>
+                <p class="card-text">عرض جميع المنح المتوفرة على المنصة</p>
+                <a asp-controller="Scholarships" asp-action="Index" class="btn btn-primary">اذهب إلى القائمة</a>
             </div>
         </div>
-
-        <!-- عدد المنح -->
-        <div class="col-md-3">
-            <div class="card text-white bg-success shadow">
-                <div class="card-body text-center">
-                    <h5 class="card-title">عدد المنح</h5>
-                    <h3>45</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- عدد الطلبات -->
-        <div class="col-md-3">
-            <div class="card text-white bg-warning shadow">
-                <div class="card-body text-center">
-                    <h5 class="card-title">طلبات المنح</h5>
-                    <h3>78</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- الاستشارات -->
-        <div class="col-md-3">
-            <div class="card text-white bg-danger shadow">
-                <div class="card-body text-center">
-                    <h5 class="card-title">الاستشارات</h5>
-                    <h3>22</h3>
-                </div>
-            </div>
-        </div>
-
     </div>
 
-    <hr class="my-5" />
-
-    <div class="row">
-
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-dark text-white">
-                    آخر المستخدمين المسجلين
-                </div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">ahmed@student.com</li>
-                        <li class="list-group-item">leila@mentor.com</li>
-                        <li class="list-group-item">admin@platform.com</li>
-                    </ul>
-                </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">إنشاء منحة جديدة</h5>
+                <p class="card-text">أضف منحة جديدة للمنصة بسهولة</p>
+                <a asp-controller="Scholarships" asp-action="Create" class="btn btn-success">إنشاء منحة</a>
             </div>
         </div>
-
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-secondary text-white">
-                    إجراءات سريعة
-                </div>
-                <div class="card-body d-grid gap-2">
-                    <a asp-controller="Scholarship" asp-action="Create" class="btn btn-primary">
-                        إضافة منحة جديدة
-                    </a>
-
-                    <a asp-controller="Office" asp-action="Create" class="btn btn-success">
-                        إضافة مكتب جديد
-                    </a>
-
-                    <a asp-controller="Consultation" asp-action="Index" class="btn btn-warning">
-                        عرض الاستشارات
-                    </a>
-                </div>
-            </div>
-        </div>
-
     </div>
 
+    <!-- تعديل المنح (يمكنك ربطه مع Index لاحقًا لاختيار المنحة) -->
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">تعديل منحة</h5>
+                <p class="card-text">اختر منحة للتعديل من القائمة</p>
+                <a asp-controller="Scholarships" asp-action="Index" class="btn btn-warning">تعديل منحة</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- حذف المنح -->
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">حذف منحة</h5>
+                <p class="card-text">اختر منحة للحذف من القائمة</p>
+                <a asp-controller="Scholarships" asp-action="Index" class="btn btn-danger">حذف منحة</a>
+            </div>
+        </div>
+    </div>
 </div>

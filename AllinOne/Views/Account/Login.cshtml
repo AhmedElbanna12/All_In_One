@@ -1,29 +1,108 @@
 ﻿@model AllinOne.ViewModels.LoginViewModel
 
-<h2>Login</h2>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تسجيل الدخول — منصة المنح العربية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/login.css" />
+</head>
+<body>
 
-<form asp-action="Login" method="post">
+    <div class="auth-wrapper">
 
-    <div>
-        <label>Email</label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
+        <!-- LEFT: FORM -->
+        <div class="auth-form-panel">
+            <div class="form-header">
+                <a class="brand-link" href="/">
+                    <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <span>منصة المنح العربية</span>
+                </a>
+                <h3>أهلاً بعودتك 👋</h3>
+                <p>سجّل دخولك للمتابعة والبحث عن منحتك المثالية</p>
+            </div>
+
+            <form asp-action="Login" method="post" class="login-form" novalidate>
+
+                <!-- Email -->
+                <div class="field-group">
+                    <label class="field-label" asp-for="Email">
+                        <span class="label-left"><i class="fas fa-envelope"></i> البريد الإلكتروني <span class="required">*</span></span>
+                    </label>
+                    <div class="field-wrap">
+                        <input asp-for="Email" type="email" placeholder="example@domain.com" autocomplete="email" />
+                        <i class="field-icon fas fa-envelope"></i>
+                    </div>
+                    <span asp-validation-for="Email" class="validation-msg"></span>
+                </div>
+
+                <!-- Password -->
+                <div class="field-group">
+                    <label class="field-label" asp-for="Password">
+                        <span class="label-left"><i class="fas fa-lock"></i> كلمة المرور <span class="required">*</span></span>
+                        <a class="forgot-link" href="/Account/ForgotPassword">نسيت كلمة المرور؟</a>
+                    </label>
+                    <div class="field-wrap">
+                        <input asp-for="Password" type="password" placeholder="أدخل كلمة مرورك" id="loginPw" autocomplete="current-password" />
+                        <i class="field-icon fas fa-lock"></i>
+                        <button type="button" class="toggle-pw" onclick="togglePw('loginPw','loginPwBtn')" id="loginPwBtn">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span asp-validation-for="Password" class="validation-msg"></span>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="remember-row">
+                    <label class="custom-check">
+                        <input asp-for="RememberMe" type="checkbox" />
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="remember-label">تذكّرني في هذا الجهاز</span>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                </button>
+
+                <div class="divider">أو</div>
+
+                <div class="form-footer">
+                    ليس لديك حساب؟ <a href="/Account/Register">سجّل مجاناً الآن</a>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- RIGHT: SIDE -->
+        <div class="auth-side">
+            <div class="side-icon-big">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="side-welcome">
+                <h2>مرحباً بك في <span>منصة المنح</span></h2>
+                <p>اكتشف الآلاف من المنح الدراسية واحصل على دعم خبراء معتمدين</p>
+            </div>
+            <div class="side-stat-row">
+                <div class="side-stat">
+                    <div class="num">+500</div>
+                    <div class="lbl">منحة متاحة</div>
+                </div>
+                <div class="side-stat">
+                    <div class="num">12K+</div>
+                    <div class="lbl">طالب مسجّل</div>
+                </div>
+            </div>
+            <div class="side-register-link">
+                جديد هنا؟ <a href="/Account/Register">أنشئ حسابك مجاناً</a>
+            </div>
+        </div>
+
     </div>
-
-    <div>
-        <label>Password</label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-
-    <div>
-        <input asp-for="RememberMe" />
-        <label>Remember Me</label>
-    </div>
-
-    <button type="submit">Login</button>
-</form>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+    </body>

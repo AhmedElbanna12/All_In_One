@@ -10,10 +10,22 @@ public static class SeedData
         using var scope = serviceProvider.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
         var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
+        // ================= 1️⃣ Seed Roles =================
+        string[] roles = { "Admin", "Student", "Mentor" };
+        foreach (var role in roles)
+        {
+            if (!await roleManager.RoleExistsAsync(role))
+            {
+                await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
+
+        // ================= 2️⃣ Seed Users =================
         if (!context.Users.Any())
         {
-            // ================= أحمد =================
+            // أحمد الطالب
             var ahmed = new User
             {
                 Name = "أحمد الطالب",
@@ -25,10 +37,10 @@ public static class SeedData
                 Country = "Egypt",
                 EmailConfirmed = true
             };
-
             await userManager.CreateAsync(ahmed, "Ahmed@123");
+            await userManager.AddToRoleAsync(ahmed, "Student");
 
-            // ================= ليلى =================
+            // ليلى المرشدة
             var leila = new User
             {
                 Name = "ليلى المرشدة",
@@ -40,10 +52,10 @@ public static class SeedData
                 Country = "Egypt",
                 EmailConfirmed = true
             };
-
             await userManager.CreateAsync(leila, "Leila@123");
+            await userManager.AddToRoleAsync(leila, "Mentor");
 
-            // ================= محمود =================
+            // محمود المدير
             var mahmoud = new User
             {
                 Name = "محمود المدير",
@@ -55,12 +67,12 @@ public static class SeedData
                 Country = "Egypt",
                 EmailConfirmed = true
             };
-
             await userManager.CreateAsync(mahmoud, "Admin@123");
+            await userManager.AddToRoleAsync(mahmoud, "Admin");
 
             await context.SaveChangesAsync();
-            // ================= باقي البيانات =================
 
+            // ================= 3️⃣ Seed باقي البيانات =================
             if (!context.Consultations.Any())
             {
                 context.Consultations.Add(new Consultation
@@ -102,7 +114,8 @@ public static class SeedData
                 {
                     Title = "منحة ألمانيا 2026",
                     ShortDescription = "منحة لدراسة الماجستير في ألمانيا",
-                    Deadline = DateTime.UtcNow.AddMonths(3)
+                    Deadline = DateTime.UtcNow.AddMonths(3),
+                    ApplicationSteps = "1. تسجيل على الموقع\n2. رفع المستندات المطلوبة\n3. انتظار الرد"
                 };
                 context.Scholarships.Add(scholarship);
 

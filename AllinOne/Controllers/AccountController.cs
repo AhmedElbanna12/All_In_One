@@ -82,7 +82,7 @@ namespace AllinOne.Controllers
                         // لو بتستخدم Identity Roles
                         if (await _userManager.IsInRoleAsync(user, "Admin"))
                         {
-                            return RedirectToAction("Index", "Dashboard");
+                            return RedirectToAction("Dashboard", "Admin");
                         }
 
                         // لو مش Admin

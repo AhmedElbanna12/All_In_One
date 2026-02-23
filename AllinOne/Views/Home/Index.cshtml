@@ -25,47 +25,40 @@
             <li><a href="#how-it-works">كيف تعمل؟</a></li>
             <li><a href="#testimonials">آراء الطلاب</a></li>
             <li><a href="#">الاستشارات</a></li>
+            <li><a href="#">لوحه التحكم</a></li>
+
         </ul>
 
         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
             <!-- Login / Register Right -->
             <ul class="navbar-nav">
-
                 @if (User.Identity != null && User.Identity.IsAuthenticated)
                 {
                     <li class="nav-item">
                         <span class="nav-link">مرحبًا @User.Identity.Name</span>
                     </li>
 
+                    @* لو الادمن يظهر له Dashboard *@
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-success" asp-controller="Admin" asp-action="Dashboard">لوحة التحكم</a>
+                        </li>
+                    }
+
                     <li class="nav-item">
-                        <a class="nav-link text-danger"
-                           asp-controller="Account"
-                           asp-action="Logout">
-                            تسجيل الخروج
-                        </a>
+                        <a class="nav-link text-danger" asp-controller="Account" asp-action="Logout">تسجيل الخروج</a>
                     </li>
                 }
                 else
                 {
                     <li class="nav-item">
-                        <a class="nav-link"
-                           asp-controller="Account"
-                           asp-action="Login">
-                            تسجيل الدخول
-                        </a>
+                        <a class="nav-link" asp-controller="Account" asp-action="Login">تسجيل الدخول</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link text-primary"
-                           asp-controller="Account"
-                           asp-action="Register">
-                            إنشاء حساب
-                        </a>
+                        <a class="nav-link text-primary" asp-controller="Account" asp-action="Register">إنشاء حساب</a>
                     </li>
                 }
-
-            </ul>
-
         </div>
         <div class="hamburger" id="hamburger">
             <span></span><span></span><span></span>

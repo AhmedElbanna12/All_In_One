@@ -1,0 +1,71 @@
+﻿@model AllinOne.Models.Scholarship
+@{
+    ViewData["Title"] = "إنشاء منحة جديدة";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">عنوان المنحة</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Country" class="form-label">البلد</label>
+        <input asp-for="Country" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FundingType" class="form-label">نوع التمويل</label>
+        <input asp-for="FundingType" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DegreeLevel" class="form-label">المستوى الدراسي</label>
+        <input asp-for="DegreeLevel" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Deadline" class="form-label">موعد انتهاء التقديم</label>
+        <input asp-for="Deadline" type="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ShortDescription" class="form-label">وصف قصير</label>
+        <textarea asp-for="ShortDescription" class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FullDescription" class="form-label">الوصف الكامل</label>
+        <textarea asp-for="FullDescription" class="form-control" rows="5"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Eligibility" class="form-label">شروط الأهلية (JSON)</label>
+        <textarea asp-for="Eligibility" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="RequiredDocuments" class="form-label">المستندات المطلوبة (JSON)</label>
+        <textarea asp-for="RequiredDocuments" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ApplicationSteps" class="form-label">خطوات التقديم (JSON)</label>
+        <textarea asp-for="ApplicationSteps" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="OfficialLink" class="form-label">الرابط الرسمي للمنحة</label>
+        <input asp-for="OfficialLink" class="form-control" />
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="Featured" class="form-check-input" />
+        <label asp-for="Featured" class="form-check-label">مميزة</label>
+    </div>
+
+    <button type="submit" class="btn btn-success">إنشاء</button>
+    <a asp-action="Index" class="btn btn-secondary">رجوع</a>
+</form>
