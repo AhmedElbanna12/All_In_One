@@ -3,12 +3,87 @@
     ViewData["Title"] = "حذف المنحة";
 }
 
-<h2>@ViewData["Title"]</h2>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — منصة المنح العربية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/scholarships.css" />
+</head>
+<body>
 
-<h4>هل أنت متأكد من حذف المنحة: <strong>@Model.Title</strong>؟</h4>
+    <div class="page-wrapper">
 
-<form asp-action="Delete" method="post">
-    <input type="hidden" asp-for="Id" />
-    <button type="submit" class="btn btn-danger">حذف</button>
-    <a asp-action="Index" class="btn btn-secondary">إلغاء</a>
-</form>
+        <div class="breadcrumb">
+            <a href="/"><i class="fas fa-home"></i> الرئيسية</a>
+            <span class="sep"><i class="fas fa-chevron-left"></i></span>
+            <a asp-action="Index">المنح الدراسية</a>
+            <span class="sep"><i class="fas fa-chevron-left"></i></span>
+            <span class="current">حذف المنحة</span>
+        </div>
+
+        <div class="delete-card">
+            <div class="card-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>تأكيد الحذف</h2>
+            </div>
+            <div class="delete-body">
+
+                <div class="delete-icon">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+
+                <h3>هل أنت متأكد من حذف هذه المنحة؟</h3>
+
+                <div class="scholarship-name">
+                    <i class="fas fa-graduation-cap"></i> @Model.Title
+                </div>
+
+                <p>
+                    سيتم حذف هذه المنحة نهائياً من المنصة ولن تتمكن من استعادتها.
+                    <br />
+                    تأكد من أنك تريد الحذف قبل المتابعة.
+                </p>
+
+                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:24px;">
+                    <span class="badge badge-teal">
+                        <i class="fas fa-globe"></i> @Model.Country
+                    </span>
+                    <span class="badge badge-accent">
+                        <i class="fas fa-coins"></i> @Model.FundingType
+                    </span>
+                    <span class="badge badge-muted">
+                        <i class="fas fa-user-graduate"></i> @Model.DegreeLevel
+                    </span>
+                    @if (Model.Featured)
+                    {
+                        <span class="badge badge-success">
+                            <i class="fas fa-star"></i> منحة مميزة
+                        </span>
+                    }
+                </div>
+
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="delete-actions">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i> نعم، احذف المنحة
+                        </button>
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> إلغاء
+                        </a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

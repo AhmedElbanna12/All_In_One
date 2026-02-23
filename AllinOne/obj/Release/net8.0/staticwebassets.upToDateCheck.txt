@@ -61,3 +61,5 @@ wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
 wwwroot\css\Register.css
+wwwroot\css\dashboard.css
+wwwroot\css\scholarships.css

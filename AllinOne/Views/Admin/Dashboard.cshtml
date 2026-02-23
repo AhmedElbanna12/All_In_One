@@ -2,51 +2,142 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<h2>@ViewData["Title"]</h2>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة التحكم — منصة المنح العربية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/dashboard.css" />
+</head>
+<body>
 
-<p>مرحبًا بك في لوحة تحكم الأدمن. من هنا يمكنك إدارة المنح الدراسية بسهولة.</p>
+    <div class="page-wrapper">
 
-<div class="row mt-4">
-    <!-- إدارة المنح -->
-    <div class="col-md-3 mb-3">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">قائمة المنح</h5>
-                <p class="card-text">عرض جميع المنح المتوفرة على المنصة</p>
-                <a asp-controller="Scholarships" asp-action="Index" class="btn btn-primary">اذهب إلى القائمة</a>
+        <!-- Page Header -->
+        <div class="dash-header">
+            <div class="dash-header-left">
+                <div class="dash-icon"><i class="fas fa-chart-line"></i></div>
+                <div>
+                    <h1>لوحة التحكم</h1>
+                    <p>مرحباً بك! من هنا يمكنك إدارة المنح الدراسية بسهولة</p>
+                </div>
+            </div>
+            <div class="dash-date">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="currentDate"></span>
             </div>
         </div>
-    </div>
 
-    <div class="col-md-3 mb-3">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">إنشاء منحة جديدة</h5>
-                <p class="card-text">أضف منحة جديدة للمنصة بسهولة</p>
-                <a asp-controller="Scholarships" asp-action="Create" class="btn btn-success">إنشاء منحة</a>
+        <!-- Cards Grid -->
+        <div class="cards-grid">
+
+            <!-- قائمة المنح -->
+            <div class="dash-card" style="--card-color: #0a3d62; --card-color-light: #1a5276;">
+                <div class="dash-card-icon">
+                    <i class="fas fa-list-ul"></i>
+                </div>
+                <div class="dash-card-body">
+                    <h3>قائمة المنح</h3>
+                    <p>عرض وإدارة جميع المنح المتوفرة على المنصة</p>
+                </div>
+                <div class="dash-card-footer">
+                    <a asp-controller="Scholarships" asp-action="Index" class="dash-btn dash-btn-primary">
+                        <i class="fas fa-arrow-left"></i> اذهب إلى القائمة
+                    </a>
+                </div>
+                <div class="dash-card-bg-icon"><i class="fas fa-list-ul"></i></div>
+            </div>
+
+            <!-- إنشاء منحة -->
+            <div class="dash-card" style="--card-color: #1b6b3a; --card-color-light: #2e9e58;">
+                <div class="dash-card-icon">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <div class="dash-card-body">
+                    <h3>إنشاء منحة جديدة</h3>
+                    <p>أضف منحة دراسية جديدة إلى المنصة بسهولة</p>
+                </div>
+                <div class="dash-card-footer">
+                    <a asp-controller="Scholarships" asp-action="Create" class="dash-btn dash-btn-success">
+                        <i class="fas fa-plus"></i> إنشاء منحة
+                    </a>
+                </div>
+                <div class="dash-card-bg-icon"><i class="fas fa-plus-circle"></i></div>
+            </div>
+
+            <!-- تعديل منحة -->
+            <div class="dash-card" style="--card-color: #c25e00; --card-color-light: #e65100;">
+                <div class="dash-card-icon">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <div class="dash-card-body">
+                    <h3>تعديل منحة</h3>
+                    <p>اختر منحة من القائمة لتعديل بياناتها وتحديثها</p>
+                </div>
+                <div class="dash-card-footer">
+                    <a asp-controller="Scholarships" asp-action="Index" class="dash-btn dash-btn-warning">
+                        <i class="fas fa-pen"></i> تعديل منحة
+                    </a>
+                </div>
+                <div class="dash-card-bg-icon"><i class="fas fa-edit"></i></div>
+            </div>
+
+            <!-- حذف منحة -->
+            <div class="dash-card" style="--card-color: #b71c1c; --card-color-light: #e53935;">
+                <div class="dash-card-icon">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <div class="dash-card-body">
+                    <h3>حذف منحة</h3>
+                    <p>اختر منحة من القائمة لحذفها نهائياً من المنصة</p>
+                </div>
+                <div class="dash-card-footer">
+                    <a asp-controller="Scholarships" asp-action="Index" class="dash-btn dash-btn-danger">
+                        <i class="fas fa-trash"></i> حذف منحة
+                    </a>
+                </div>
+                <div class="dash-card-bg-icon"><i class="fas fa-trash-alt"></i></div>
+            </div>
+
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="stats-section">
+            <div class="stats-title">
+                <i class="fas fa-chart-bar"></i> روابط سريعة
+            </div>
+            <div class="quick-links">
+                <a asp-controller="Scholarships" asp-action="Index" class="quick-link">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>كل المنح</span>
+                </a>
+                <a asp-controller="Scholarships" asp-action="Create" class="quick-link">
+                    <i class="fas fa-plus"></i>
+                    <span>منحة جديدة</span>
+                </a>
+                <a href="/" class="quick-link">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="/Account/Login" class="quick-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>تسجيل الخروج</span>
+                </a>
             </div>
         </div>
+
     </div>
 
-    <!-- تعديل المنح (يمكنك ربطه مع Index لاحقًا لاختيار المنحة) -->
-    <div class="col-md-3 mb-3">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">تعديل منحة</h5>
-                <p class="card-text">اختر منحة للتعديل من القائمة</p>
-                <a asp-controller="Scholarships" asp-action="Index" class="btn btn-warning">تعديل منحة</a>
-            </div>
-        </div>
-    </div>
+    <script>
+        const d = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').textContent = d.toLocaleDateString('ar-EG', options);
+    </script>
 
-    <!-- حذف المنح -->
-    <div class="col-md-3 mb-3">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">حذف منحة</h5>
-                <p class="card-text">اختر منحة للحذف من القائمة</p>
-                <a asp-controller="Scholarships" asp-action="Index" class="btn btn-danger">حذف منحة</a>
-            </div>
-        </div>
-    </div>
-</div>
+</body>
+</html>

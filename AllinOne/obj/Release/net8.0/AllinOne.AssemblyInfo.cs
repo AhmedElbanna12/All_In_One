@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AllinOne")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24c51c52b736af94eb7126f01959076c79f2a145")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c127f338d0772ca64267912f544c18ee7dd24412")]
 [assembly: System.Reflection.AssemblyProductAttribute("AllinOne")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AllinOne")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

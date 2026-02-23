@@ -3,69 +3,242 @@
     ViewData["Title"] = "إنشاء منحة جديدة";
 }
 
-<h2>@ViewData["Title"]</h2>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — منصة المنح العربية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/scholarships.css" />
+</head>
+<body>
 
-<form asp-action="Create" method="post">
-    <div class="mb-3">
-        <label asp-for="Title" class="form-label">عنوان المنحة</label>
-        <input asp-for="Title" class="form-control" />
+    <div class="page-wrapper">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/"><i class="fas fa-home"></i> الرئيسية</a>
+            <span class="sep"><i class="fas fa-chevron-left"></i></span>
+            <a asp-action="Index">المنح الدراسية</a>
+            <span class="sep"><i class="fas fa-chevron-left"></i></span>
+            <span class="current">إنشاء منحة جديدة</span>
+        </div>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="page-header-left">
+                <div class="page-icon"><i class="fas fa-plus-circle"></i></div>
+                <div class="page-title">
+                    <h1>إنشاء منحة جديدة</h1>
+                    <p>أضف منحة دراسية جديدة إلى المنصة</p>
+                </div>
+            </div>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-right"></i> رجوع للقائمة
+            </a>
+        </div>
+
+        <!-- Card -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>بيانات المنحة</h2>
+            </div>
+            <div class="card-body">
+
+                <form asp-action="Create" method="post" novalidate>
+
+                    <!-- Section 1: Basic Info -->
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-info-circle"></i> المعلومات الأساسية
+                        </div>
+                        <div class="fields-grid">
+                            <div class="field-group field-full">
+                                <label class="field-label" asp-for="Title">
+                                    <i class="fas fa-heading"></i> عنوان المنحة <span class="required">*</span>
+                                </label>
+                                <div class="field-wrap">
+                                    <input asp-for="Title" type="text" placeholder="مثال: منحة الملك عبدالله للتميز" />
+                                    <i class="field-icon fas fa-heading"></i>
+                                </div>
+                                <span asp-validation-for="Title" class="validation-msg"></span>
+                            </div>
+
+                            <div class="field-group">
+                                <label class="field-label" asp-for="Country">
+                                    <i class="fas fa-globe"></i> البلد <span class="required">*</span>
+                                </label>
+                                <div class="field-wrap">
+                                    <input asp-for="Country" type="text" placeholder="مثال: المملكة العربية السعودية" />
+                                    <i class="field-icon fas fa-globe"></i>
+                                </div>
+                                <span asp-validation-for="Country" class="validation-msg"></span>
+                            </div>
+
+                            <div class="field-group">
+                                <label class="field-label" asp-for="Deadline">
+                                    <i class="fas fa-calendar-alt"></i> موعد انتهاء التقديم <span class="required">*</span>
+                                </label>
+                                <div class="field-wrap">
+                                    <input asp-for="Deadline" type="date" />
+                                    <i class="field-icon fas fa-calendar-alt"></i>
+                                </div>
+                                <span asp-validation-for="Deadline" class="validation-msg"></span>
+                            </div>
+
+                            <div class="field-group">
+                                <label class="field-label" asp-for="FundingType">
+                                    <i class="fas fa-coins"></i> نوع التمويل <span class="required">*</span>
+                                </label>
+                                <div class="field-wrap">
+                                    <input asp-for="FundingType" type="text" placeholder="مثال: ممولة بالكامل، جزئية" />
+                                    <i class="field-icon fas fa-coins"></i>
+                                </div>
+                                <span asp-validation-for="FundingType" class="validation-msg"></span>
+                            </div>
+
+                            <div class="field-group">
+                                <label class="field-label" asp-for="DegreeLevel">
+                                    <i class="fas fa-user-graduate"></i> المستوى الدراسي <span class="required">*</span>
+                                </label>
+                                <div class="field-wrap">
+                                    <input asp-for="DegreeLevel" type="text" placeholder="مثال: بكالوريوس، ماجستير، دكتوراه" />
+                                    <i class="field-icon fas fa-user-graduate"></i>
+                                </div>
+                                <span asp-validation-for="DegreeLevel" class="validation-msg"></span>
+                            </div>
+
+                            <div class="field-group">
+                                <label class="field-label" asp-for="OfficialLink">
+                                    <i class="fas fa-link"></i> الرابط الرسمي
+                                </label>
+                                <div class="field-wrap">
+                                    <input asp-for="OfficialLink" type="url" placeholder="https://..." />
+                                    <i class="field-icon fas fa-link"></i>
+                                </div>
+                                <span asp-validation-for="OfficialLink" class="validation-msg"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Descriptions -->
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-align-right"></i> الأوصاف
+                        </div>
+                        <div class="fields-grid">
+                            <div class="field-group field-full">
+                                <label class="field-label" asp-for="ShortDescription">
+                                    <i class="fas fa-align-left"></i> وصف قصير <span class="required">*</span>
+                                </label>
+                                <div class="field-wrap">
+                                    <textarea asp-for="ShortDescription" rows="2" placeholder="ملخص موجز للمنحة..."></textarea>
+                                </div>
+                                <span asp-validation-for="ShortDescription" class="validation-msg"></span>
+                            </div>
+
+                            <div class="field-group field-full">
+                                <label class="field-label" asp-for="FullDescription">
+                                    <i class="fas fa-file-alt"></i> الوصف الكامل
+                                </label>
+                                <div class="field-wrap">
+                                    <textarea asp-for="FullDescription" rows="5" placeholder="وصف تفصيلي شامل للمنحة..."></textarea>
+                                </div>
+                                <span asp-validation-for="FullDescription" class="validation-msg"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: JSON Fields -->
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-list-ul"></i> المتطلبات والخطوات
+                        </div>
+                        <div class="fields-grid">
+                            <div class="field-group">
+                                <label class="field-label" asp-for="Eligibility">
+                                    <i class="fas fa-check-circle"></i> شروط الأهلية
+                                </label>
+                                <div class="field-wrap">
+                                    <textarea asp-for="Eligibility" rows="4" placeholder='["شرط 1", "شرط 2"]'></textarea>
+                                </div>
+                                <span class="field-hint"><i class="fas fa-code"></i> أدخل البيانات بصيغة JSON</span>
+                                <span asp-validation-for="Eligibility" class="validation-msg"></span>
+                            </div>
+
+                            <div class="field-group">
+                                <label class="field-label" asp-for="RequiredDocuments">
+                                    <i class="fas fa-file-upload"></i> المستندات المطلوبة
+                                </label>
+                                <div class="field-wrap">
+                                    <textarea asp-for="RequiredDocuments" rows="4" placeholder='["مستند 1", "مستند 2"]'></textarea>
+                                </div>
+                                <span class="field-hint"><i class="fas fa-code"></i> أدخل البيانات بصيغة JSON</span>
+                                <span asp-validation-for="RequiredDocuments" class="validation-msg"></span>
+                            </div>
+
+                            <div class="field-group field-full">
+                                <label class="field-label" asp-for="ApplicationSteps">
+                                    <i class="fas fa-tasks"></i> خطوات التقديم
+                                </label>
+                                <div class="field-wrap">
+                                    <textarea asp-for="ApplicationSteps" rows="3" placeholder='["الخطوة 1", "الخطوة 2"]'></textarea>
+                                </div>
+                                <span class="field-hint"><i class="fas fa-code"></i> أدخل البيانات بصيغة JSON</span>
+                                <span asp-validation-for="ApplicationSteps" class="validation-msg"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Options -->
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-sliders-h"></i> الخيارات
+                        </div>
+                        <label class="check-row" style="max-width:340px; cursor:pointer;">
+                            <label class="custom-check">
+                                <input asp-for="Featured" type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <div>
+                                <div class="check-label-text"><i class="fas fa-star" style="color:var(--accent);"></i> منحة مميزة</div>
+                                <div class="check-label-sub">ستظهر في أعلى القائمة وعلى الصفحة الرئيسية</div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-plus-circle"></i> إنشاء المنحة
+                        </button>
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> إلغاء
+                        </a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
     </div>
 
-    <div class="mb-3">
-        <label asp-for="Country" class="form-label">البلد</label>
-        <input asp-for="Country" class="form-control" />
-    </div>
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+        <script>
+            document.querySelectorAll('input, textarea').forEach(el => {
+                el.addEventListener('invalid', () => el.classList.add('input-error'));
+                el.addEventListener('input', () => {
+                    if (el.validity.valid) el.classList.remove('input-error');
+                });
+            });
+        </script>
+    }
 
-    <div class="mb-3">
-        <label asp-for="FundingType" class="form-label">نوع التمويل</label>
-        <input asp-for="FundingType" class="form-control" />
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="DegreeLevel" class="form-label">المستوى الدراسي</label>
-        <input asp-for="DegreeLevel" class="form-control" />
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="Deadline" class="form-label">موعد انتهاء التقديم</label>
-        <input asp-for="Deadline" type="date" class="form-control" />
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="ShortDescription" class="form-label">وصف قصير</label>
-        <textarea asp-for="ShortDescription" class="form-control"></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="FullDescription" class="form-label">الوصف الكامل</label>
-        <textarea asp-for="FullDescription" class="form-control" rows="5"></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="Eligibility" class="form-label">شروط الأهلية (JSON)</label>
-        <textarea asp-for="Eligibility" class="form-control" rows="3"></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="RequiredDocuments" class="form-label">المستندات المطلوبة (JSON)</label>
-        <textarea asp-for="RequiredDocuments" class="form-control" rows="3"></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="ApplicationSteps" class="form-label">خطوات التقديم (JSON)</label>
-        <textarea asp-for="ApplicationSteps" class="form-control" rows="3"></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="OfficialLink" class="form-label">الرابط الرسمي للمنحة</label>
-        <input asp-for="OfficialLink" class="form-control" />
-    </div>
-
-    <div class="form-check mb-3">
-        <input asp-for="Featured" class="form-check-input" />
-        <label asp-for="Featured" class="form-check-label">مميزة</label>
-    </div>
-
-    <button type="submit" class="btn btn-success">إنشاء</button>
-    <a asp-action="Index" class="btn btn-secondary">رجوع</a>
-</form>
+</body>
+</html>
