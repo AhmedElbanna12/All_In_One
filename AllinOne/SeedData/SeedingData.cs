@@ -1,17 +1,19 @@
 ﻿using AllinOne.Models;
 using ScholarshipPlatform.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
 public static class SeedData
 {
-    public static void Initialize(IServiceProvider serviceProvider)
+    public static async Task InitializeAsync(IServiceProvider serviceProvider)
     {
         using var scope = serviceProvider.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
 
-        // Phase 1: Users
         if (!context.Users.Any())
         {
+            // ================= أحمد =================
             var ahmed = new User
             {
                 Name = "أحمد الطالب",
@@ -20,9 +22,13 @@ public static class SeedData
                 Role = "Student",
                 Address = "Cairo, Egypt",
                 Age = "25",
-                Country = "Egypt" // مهم لتجنب NULL
+                Country = "Egypt",
+                EmailConfirmed = true
             };
 
+            await userManager.CreateAsync(ahmed, "Ahmed@123");
+
+            // ================= ليلى =================
             var leila = new User
             {
                 Name = "ليلى المرشدة",
@@ -31,9 +37,13 @@ public static class SeedData
                 Role = "Mentor",
                 Address = "Cairo, Egypt",
                 Age = "25",
-                Country = "Egypt"
+                Country = "Egypt",
+                EmailConfirmed = true
             };
 
+            await userManager.CreateAsync(leila, "Leila@123");
+
+            // ================= محمود =================
             var mahmoud = new User
             {
                 Name = "محمود المدير",
@@ -42,13 +52,15 @@ public static class SeedData
                 Role = "Admin",
                 Address = "Cairo, Egypt",
                 Age = "35",
-                Country = "Egypt"
+                Country = "Egypt",
+                EmailConfirmed = true
             };
 
-            context.Users.AddRange(ahmed, leila, mahmoud);
-            context.SaveChanges(); // مهم لتوليد Ids
+            await userManager.CreateAsync(mahmoud, "Admin@123");
 
-            // Phase 2: Consultations
+            await context.SaveChangesAsync();
+            // ================= باقي البيانات =================
+
             if (!context.Consultations.Any())
             {
                 context.Consultations.Add(new Consultation
@@ -61,7 +73,6 @@ public static class SeedData
                 });
             }
 
-            // Phase 3: Communities + Chat
             if (!context.Communities.Any())
             {
                 var community = new Community { Name = "طلاب منحة ألمانيا 2026" };
@@ -76,7 +87,6 @@ public static class SeedData
                 });
             }
 
-            // Phase 4: Offices + Scholarships + Applications
             if (!context.Offices.Any())
             {
                 var office = new Office
@@ -88,7 +98,6 @@ public static class SeedData
                 };
                 context.Offices.Add(office);
 
-                // أضف منحة افتراضية
                 var scholarship = new Scholarship
                 {
                     Title = "منحة ألمانيا 2026",
@@ -97,9 +106,8 @@ public static class SeedData
                 };
                 context.Scholarships.Add(scholarship);
 
-                context.SaveChanges(); // حفظ الكائنات لتوليد Ids
+                await context.SaveChangesAsync();
 
-                // أضف طلب المنحة
                 context.ScholarshipApplications.Add(new ScholarshipApplication
                 {
                     ScholarshipId = scholarship.Id,
@@ -110,7 +118,7 @@ public static class SeedData
                 });
             }
 
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
     }
 }

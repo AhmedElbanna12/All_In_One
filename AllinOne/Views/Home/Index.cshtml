@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>منصة المنح العربية</title>
+    <title>All In One</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
@@ -16,7 +16,7 @@
     <nav id="navbar">
         <a class="nav-logo" href="#">
             <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
-            <span>منصة المنح العربية</span>
+            <span>All In One</span>
         </a>
 
         <ul class="nav-links" id="navLinks">
@@ -27,9 +27,45 @@
             <li><a href="#">الاستشارات</a></li>
         </ul>
 
-        <div class="nav-actions">
-            <a class="btn-outline" href="#">تسجيل الدخول</a>
-            <a class="btn-primary" href="#">تصفح المنح</a>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <!-- Login / Register Right -->
+            <ul class="navbar-nav">
+
+                @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <span class="nav-link">مرحبًا @User.Identity.Name</span>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-danger"
+                           asp-controller="Account"
+                           asp-action="Logout">
+                            تسجيل الخروج
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           asp-controller="Account"
+                           asp-action="Login">
+                            تسجيل الدخول
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-primary"
+                           asp-controller="Account"
+                           asp-action="Register">
+                            إنشاء حساب
+                        </a>
+                    </li>
+                }
+
+            </ul>
+
         </div>
         <div class="hamburger" id="hamburger">
             <span></span><span></span><span></span>
@@ -287,8 +323,10 @@
             <h2 class="section-title" style="margin-bottom:16px;">حلمك بالدراسة في الخارج يبدأ هنا</h2>
             <p>سجل الآن مجانًا واستكشف مئات المنح المتاحة لك. فريقنا من الخبراء جاهز لمساعدتك في كل خطوة.</p>
             <div class="cta-btns">
-                <a class="btn-cta-white" href="#"><i class="fas fa-user-plus" style="margin-left:8px;"></i> سجّل مجانًا الآن</a>
-                <a class="btn-cta-outline" href="#scholarships"><i class="fas fa-search" style="margin-left:8px;"></i> تصفح المنح</a>
+                <a class="btn-cta-white" asp-controller="Account" asp-action="Register">
+                    <i class="fas fa-user-plus"></i>
+                    سجّل مجانًا الآن
+                </a>                <a class="btn-cta-outline" href="#scholarships"><i class="fas fa-search" style="margin-left:8px;"></i> تصفح المنح</a>
             </div>
         </div>
     </section>

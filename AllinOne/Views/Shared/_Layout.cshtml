@@ -19,10 +19,50 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                    <!-- Links Left -->
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">الرئيسية</a>
                         </li>
+                    </ul>
+
+                    <!-- Login / Register Right -->
+                    <ul class="navbar-nav">
+
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link">مرحبًا @User.Identity.Name</span>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-danger"
+                                   asp-controller="Account"
+                                   asp-action="Logout">
+                                    تسجيل الخروج
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-controller="Account"
+                                   asp-action="Login">
+                                    تسجيل الدخول
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-primary"
+                                   asp-controller="Account"
+                                   asp-action="Register">
+                                    إنشاء حساب
+                                </a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>

@@ -152,3 +152,4 @@ E:\projects\mvc\AllinOne\AllinOne\obj\Debug\net8.0\refint\AllinOne.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Debug\net8.0\AllinOne.pdb
 E:\projects\mvc\AllinOne\AllinOne\obj\Debug\net8.0\AllinOne.genruntimeconfig.cache
 E:\projects\mvc\AllinOne\AllinOne\obj\Debug\net8.0\ref\AllinOne.dll
+E:\projects\mvc\AllinOne\AllinOne\obj\Debug\net8.0\AllinOne.sourcelink.json
