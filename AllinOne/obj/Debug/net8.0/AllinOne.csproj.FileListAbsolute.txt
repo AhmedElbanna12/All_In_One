@@ -153,3 +153,13 @@ E:\projects\mvc\AllinOne\AllinOne\obj\Debug\net8.0\AllinOne.pdb
 E:\projects\mvc\AllinOne\AllinOne\obj\Debug\net8.0\AllinOne.genruntimeconfig.cache
 E:\projects\mvc\AllinOne\AllinOne\obj\Debug\net8.0\ref\AllinOne.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Debug\net8.0\AllinOne.sourcelink.json
+E:\projects\mvc\AllinOne\AllinOne\bin\Debug\net8.0\CP.AspNetCore.SignalR.Client.Rx.dll
+E:\projects\mvc\AllinOne\AllinOne\bin\Debug\net8.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+E:\projects\mvc\AllinOne\AllinOne\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Connections.Client.dll
+E:\projects\mvc\AllinOne\AllinOne\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Connections.Common.dll
+E:\projects\mvc\AllinOne\AllinOne\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Client.dll
+E:\projects\mvc\AllinOne\AllinOne\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
+E:\projects\mvc\AllinOne\AllinOne\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Common.dll
+E:\projects\mvc\AllinOne\AllinOne\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+E:\projects\mvc\AllinOne\AllinOne\bin\Debug\net8.0\Microsoft.Extensions.Features.dll
+E:\projects\mvc\AllinOne\AllinOne\bin\Debug\net8.0\System.Reactive.dll

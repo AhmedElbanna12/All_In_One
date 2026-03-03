@@ -6,10 +6,18 @@ E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\AllinOne.runtime
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\AllinOne.pdb
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Azure.Core.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Azure.Identity.dll
+E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\CP.AspNetCore.SignalR.Client.Rx.dll
+E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Connections.Abstractions.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Http.Connections.Client.dll
+E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Http.Connections.Common.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Identity.UI.dll
+E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.SignalR.Client.dll
+E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.SignalR.Client.Core.dll
+E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.SignalR.Common.dll
+E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
@@ -19,6 +27,7 @@ E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.Entity
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Caching.Memory.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Features.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.FileProviders.Embedded.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Identity.Core.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Identity.Stores.dll
@@ -40,6 +49,7 @@ E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\System.Configura
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\System.Drawing.Common.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\System.Memory.Data.dll
+E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\System.Reactive.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\System.Runtime.Caching.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 E:\projects\mvc\AllinOne\AllinOne\obj\Release\net8.0\PubTmp\Out\System.Security.Permissions.dll

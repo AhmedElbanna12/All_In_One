@@ -25,6 +25,12 @@ namespace ScholarshipPlatform.Data
         public DbSet<Office> Offices => Set<Office>();
         public DbSet<ScholarshipApplication> ScholarshipApplications => Set<ScholarshipApplication>();
 
+
+        public DbSet<CommunityMember> CommunityMembers => Set<CommunityMember>();
+
+
+        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -43,10 +49,18 @@ namespace ScholarshipPlatform.Data
                 .WithMany(s => s.UserScholarships)
                 .HasForeignKey(us => us.ScholarshipId);
 
-            // Community Members Many-to-Many
-            modelBuilder.Entity<Community>()
-                .HasMany(c => c.Members)
-                .WithMany(u => u.Communities);
+            modelBuilder.Entity<CommunityMember>()
+     .HasKey(cm => new { cm.CommunityId, cm.UserId });
+
+            modelBuilder.Entity<CommunityMember>()
+                .HasOne(cm => cm.Community)
+                .WithMany(c => c.Members)
+                .HasForeignKey(cm => cm.CommunityId);
+
+            modelBuilder.Entity<CommunityMember>()
+                .HasOne(cm => cm.User)
+                .WithMany(u => u.Communities)
+                .HasForeignKey(cm => cm.UserId);
 
             // ChatMessage Relations
             modelBuilder.Entity<ChatMessage>()

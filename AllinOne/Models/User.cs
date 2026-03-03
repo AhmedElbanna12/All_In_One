@@ -16,7 +16,6 @@ namespace AllinOne.Models
         public ICollection<Consultation>? StudentConsultations { get; set; } // if Role=Student
         public ICollection<Consultation>? MentorConsultations { get; set; } // if Role=Mentor
         public ICollection<ChatMessage>? ChatMessages { get; set; }
-
-        public ICollection<Community>? Communities { get; set; }
+        public ICollection<CommunityMember>? Communities { get; set; }
     }
 }

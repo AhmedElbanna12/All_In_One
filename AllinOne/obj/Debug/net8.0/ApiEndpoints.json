@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "ContainingType": "AllinOne.Controllers.CommunityChatController",
+    "Method": "GetMessages",
+    "RelativePath": "api/CommunityChat/GetMessages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "communityId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AllinOne.Controllers.CommunityChatController",
+    "Method": "JoinCommunity",
+    "RelativePath": "api/CommunityChat/JoinCommunity",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "communityId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AllinOne.Controllers.CommunityChatController",
+    "Method": "Index",
+    "RelativePath": "CommunityChat/Index/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -70,6 +70,24 @@ namespace AllinOne.Migrations
                     b.ToTable("Communities");
                 });
 
+            modelBuilder.Entity("AllinOne.Models.CommunityMember", b =>
+                {
+                    b.Property<int>("CommunityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("JoinedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CommunityId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CommunityMembers");
+                });
+
             modelBuilder.Entity("AllinOne.Models.Consultation", b =>
                 {
                     b.Property<int>("Id")
@@ -342,21 +360,6 @@ namespace AllinOne.Migrations
                     b.ToTable("UserScholarships");
                 });
 
-            modelBuilder.Entity("CommunityUser", b =>
-                {
-                    b.Property<int>("CommunitiesId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MembersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("CommunitiesId", "MembersId");
-
-                    b.HasIndex("MembersId");
-
-                    b.ToTable("CommunityUser");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -509,6 +512,25 @@ namespace AllinOne.Migrations
                     b.Navigation("Sender");
                 });
 
+            modelBuilder.Entity("AllinOne.Models.CommunityMember", b =>
+                {
+                    b.HasOne("AllinOne.Models.Community", "Community")
+                        .WithMany("Members")
+                        .HasForeignKey("CommunityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AllinOne.Models.User", "User")
+                        .WithMany("Communities")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Community");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("AllinOne.Models.Consultation", b =>
                 {
                     b.HasOne("AllinOne.Models.User", "Mentor")
@@ -581,21 +603,6 @@ namespace AllinOne.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("CommunityUser", b =>
-                {
-                    b.HasOne("AllinOne.Models.Community", null)
-                        .WithMany()
-                        .HasForeignKey("CommunitiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AllinOne.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("MembersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -649,6 +656,8 @@ namespace AllinOne.Migrations
 
             modelBuilder.Entity("AllinOne.Models.Community", b =>
                 {
+                    b.Navigation("Members");
+
                     b.Navigation("Messages");
                 });
 
@@ -667,6 +676,8 @@ namespace AllinOne.Migrations
             modelBuilder.Entity("AllinOne.Models.User", b =>
                 {
                     b.Navigation("ChatMessages");
+
+                    b.Navigation("Communities");
 
                     b.Navigation("MentorConsultations");
 

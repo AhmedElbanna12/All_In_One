@@ -1,4 +1,5 @@
 using AllinOne.Models;
+using AllinOne.SeedData;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ScholarshipPlatform.Data;
@@ -24,13 +25,30 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+
+builder.Services.AddSignalR();
+
+
 
 var app = builder.Build();
+
+app.MapHub<CommunityChatHub>("/communityChatHub");
+
 // ================= Seed Roles & Users ??? ??? ??????? =================
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
+
+    // ??? ??? DbContext
+    var context = services.GetRequiredService<ApplicationDbContext>();
+
+    // Seed ???? Users ? Messages ???
     await SeedData.InitializeAsync(services);
+
+    // Seed Communities ???
+    await SeedCommunity.Initialize(context);
 }
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
