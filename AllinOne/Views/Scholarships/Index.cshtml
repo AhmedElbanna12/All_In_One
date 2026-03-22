@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<AllinOne.Models.Scholarship>
+
 @{
-    ViewData["Title"] = "قائمة المنح";
+    ViewData["Title"] = "المنح الدراسية";
 }
 
 <!DOCTYPE html>
@@ -8,136 +9,687 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] — منصة المنح العربية</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="~/css/scholarships.css" />
+    <title>المنح الدراسية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        /* ── PAGE HEADER ── */
+        .page-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0c4a6e 100%);
+            padding: 60px 30px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .page-header::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-image: linear-gradient(rgba(59,130,246,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.07) 1px, transparent 1px);
+                background-size: 40px 40px;
+            }
+
+            .page-header h1 {
+                position: relative;
+                font-size: clamp(28px, 5vw, 48px);
+                font-weight: 900;
+                color: #fff;
+                margin-bottom: 12px;
+            }
+
+                .page-header h1 span {
+                    background: linear-gradient(90deg, #60a5fa, #22d3ee);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
+
+            .page-header p {
+                position: relative;
+                color: rgba(255,255,255,0.65);
+                font-size: 16px;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+        /* orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: #3b82f6;
+            top: -180px;
+            right: -120px;
+        }
+
+        .orb-2 {
+            width: 350px;
+            height: 350px;
+            background: #06b6d4;
+            bottom: -100px;
+            left: -80px;
+        }
+
+        /* wave */
+        .wave-wrap {
+            background: linear-gradient(135deg, #0f172a, #1e3a5f);
+            line-height: 0;
+        }
+
+            .wave-wrap svg {
+                display: block;
+            }
+
+        /* ── SEARCH / FILTER BAR ── */
+        .toolbar {
+            max-width: 1150px;
+            margin: -28px auto 36px;
+            padding: 0 24px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 220px;
+            position: relative;
+        }
+
+            .search-box input {
+                width: 100%;
+                padding: 14px 20px 14px 44px;
+                border-radius: 14px;
+                border: 1.5px solid #e2e8f0;
+                background: #fff;
+                font-family: 'Tajawal', sans-serif;
+                font-size: 15px;
+                color: #1e293b;
+                outline: none;
+                box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+                transition: border-color 0.2s, box-shadow 0.2s;
+            }
+
+                .search-box input:focus {
+                    border-color: #3b82f6;
+                    box-shadow: 0 8px 30px rgba(59,130,246,0.15);
+                }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 17px;
+            pointer-events: none;
+        }
+
+        .filter-select {
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: 1.5px solid #e2e8f0;
+            background: #fff;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 15px;
+            color: #1e293b;
+            outline: none;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+            .filter-select:focus {
+                border-color: #3b82f6;
+            }
+
+        /* ── STATS ROW ── */
+        .stats-row {
+            max-width: 1150px;
+            margin: 0 auto 32px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 14px;
+        }
+
+        .stat-pill {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            animation: pop-in 0.5s cubic-bezier(0.175,0.885,0.32,1.275) both;
+        }
+
+            .stat-pill:nth-child(1) {
+                animation-delay: 0.05s;
+            }
+
+            .stat-pill:nth-child(2) {
+                animation-delay: 0.12s;
+            }
+
+            .stat-pill:nth-child(3) {
+                animation-delay: 0.19s;
+            }
+
+            .stat-pill:nth-child(4) {
+                animation-delay: 0.26s;
+            }
+
+        .stat-icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+            .stat-icon-box.blue {
+                background: #eff6ff;
+            }
+
+            .stat-icon-box.green {
+                background: #f0fdf4;
+            }
+
+            .stat-icon-box.amber {
+                background: #fffbeb;
+            }
+
+            .stat-icon-box.rose {
+                background: #fff1f2;
+            }
+
+        .stat-text-label {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .stat-text-value {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.1;
+        }
+
+        /* ── GRID ── */
+        .schol-grid {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 22px;
+        }
+
+        /* ── CARD ── */
+        .schol-card {
+            background: #fff;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: card-in 0.5s ease both;
+            position: relative;
+        }
+
+            .schol-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+            }
+
+            /* top accent line */
+            .schol-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, #3b82f6, #06b6d4);
+                border-radius: 20px 20px 0 0;
+            }
+
+        .card-header {
+            padding: 24px 24px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .country-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+            border: 1px solid #bfdbfe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .card-title-group {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .schol-name {
+            font-size: 17px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.3;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .country-name {
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* tags */
+        .schol-meta {
+            padding: 0 24px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tag {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 11px;
+            border-radius: 100px;
+            letter-spacing: 0.2px;
+        }
+
+        .tag-degree {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+        }
+
+        .tag-funding {
+            background: #fffbeb;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        .tag-deadline {
+            background: #fff1f2;
+            color: #9f1239;
+            border: 1px solid #fecdd3;
+        }
+
+        /* desc */
+        .schol-desc {
+            padding: 0 24px 20px;
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.75;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* divider */
+        .card-divider {
+            height: 1px;
+            background: #f1f5f9;
+            margin: 0 24px;
+        }
+
+        /* footer */
+        .card-footer {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .deadline-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .btn-details {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: #fff;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+            box-shadow: 0 4px 16px rgba(59,130,246,0.35);
+        }
+
+            .btn-details:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 24px rgba(59,130,246,0.45);
+            }
+
+            .btn-details .arrow {
+                display: inline-block;
+                transition: transform 0.25s;
+                font-style: normal;
+            }
+
+            .btn-details:hover .arrow {
+                transform: translateX(-4px);
+            }
+
+        /* featured glow */
+        .schol-card.featured {
+            border-color: #bfdbfe;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 100px;
+            letter-spacing: 0.3px;
+        }
+
+        /* empty state */
+        .empty-state {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 80px 20px;
+            color: #94a3b8;
+        }
+
+            .empty-state .empty-icon {
+                font-size: 52px;
+                margin-bottom: 16px;
+            }
+
+            .empty-state h3 {
+                font-size: 20px;
+                font-weight: 700;
+                color: #64748b;
+                margin-bottom: 8px;
+            }
+
+        /* ── ANIMATIONS ── */
+        @@keyframes pop-in {
+            from {
+                opacity: 0;
+                transform: scale(0.85) translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @@keyframes card-in {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* stagger cards */
+        .schol-card:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .schol-card:nth-child(2) {
+            animation-delay: 0.10s;
+        }
+
+        .schol-card:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .schol-card:nth-child(4) {
+            animation-delay: 0.20s;
+        }
+
+        .schol-card:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        .schol-card:nth-child(6) {
+            animation-delay: 0.30s;
+        }
+
+        .schol-card:nth-child(7) {
+            animation-delay: 0.35s;
+        }
+
+        .schol-card:nth-child(8) {
+            animation-delay: 0.40s;
+        }
+
+        .schol-card:nth-child(9) {
+            animation-delay: 0.45s;
+        }
+
+        .schol-card:nth-child(10) {
+            animation-delay: 0.50s;
+        }
+
+        @@media (max-width: 640px) {
+            .schol-grid {
+                grid-template-columns: 1fr;
+                padding: 0 16px 60px;
+            }
+
+            .toolbar {
+                margin-top: -20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <div class="page-wrapper wide">
+    <!-- ── HEADER ── -->
+    <div class="page-header">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <h1>المنح <span>الدراسية</span></h1>
+        <p>اكتشف أفضل المنح الممولة بالكامل حول العالم وقدّم الآن</p>
+    </div>
 
-        <div class="breadcrumb">
-            <a href="/"><i class="fas fa-home"></i> الرئيسية</a>
-            <span class="sep"><i class="fas fa-chevron-left"></i></span>
-            <span class="current">المنح الدراسية</span>
+    <div class="wave-wrap">
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#f1f5f9" />
+        </svg>
+    </div>
+
+    <!-- ── TOOLBAR ── -->
+    <div class="toolbar">
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="ابحث عن منحة..." oninput="filterCards()" />
         </div>
+        <select class="filter-select" id="fundingFilter" onchange="filterCards()">
+            <option value="">كل أنواع التمويل</option>
+            <option value="تمويل كامل">تمويل كامل</option>
+            <option value="تمويل جزئي">تمويل جزئي</option>
+        </select>
+        <select class="filter-select" id="degreeFilter" onchange="filterCards()">
+            <option value="">كل المراحل</option>
+            <option value="بكالوريوس">بكالوريوس</option>
+            <option value="ماجستير">ماجستير</option>
+            <option value="دكتوراه">دكتوراه</option>
+        </select>
+    </div>
 
-        <div class="page-header">
-            <div class="page-header-left">
-                <div class="page-icon"><i class="fas fa-graduation-cap"></i></div>
-                <div class="page-title">
-                    <h1>المنح الدراسية</h1>
-                    <p>إدارة وعرض جميع المنح المتاحة على المنصة</p>
-                </div>
+    <!-- ── STATS ── -->
+    <div class="stats-row">
+        <div class="stat-pill">
+            <div class="stat-icon-box blue">🎓</div>
+            <div>
+                <div class="stat-text-label">إجمالي المنح</div>
+                <div class="stat-text-value" id="totalCount">@Model.Count()</div>
             </div>
-            <a asp-action="Create" class="btn btn-success">
-                <i class="fas fa-plus"></i> إنشاء منحة جديدة
-            </a>
         </div>
-
-        <div class="table-card">
-
-            <div class="table-toolbar">
-                <div class="table-search">
-                    <input type="text" id="searchInput" placeholder="ابحث عن منحة..." />
-                    <i class="fas fa-search"></i>
-                </div>
-                <div class="table-count">
-                    إجمالي المنح: <span id="rowCount">@Model.Count()</span>
-                </div>
+        <div class="stat-pill">
+            <div class="stat-icon-box green">💰</div>
+            <div>
+                <div class="stat-text-label">تمويل كامل</div>
+                <div class="stat-text-value">@Model.Count(s => s.FundingType != null && s.FundingType.Contains("كامل"))</div>
             </div>
-
-            <div style="overflow-x: auto;">
-                <table class="data-table" id="scholarshipsTable">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th><i class="fas fa-heading"></i> العنوان</th>
-                            <th><i class="fas fa-globe"></i> البلد</th>
-                            <th><i class="fas fa-coins"></i> التمويل</th>
-                            <th><i class="fas fa-user-graduate"></i> المستوى</th>
-                            <th><i class="fas fa-calendar-alt"></i> الموعد النهائي</th>
-                            <th><i class="fas fa-star"></i> مميزة</th>
-                            <th><i class="fas fa-cog"></i> إجراءات</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @{
-                            int i = 1;
-                        }
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td style="color:var(--text-muted); font-size:.82rem;">@i</td>
-                                <td style="font-weight:600; max-width:220px;">@item.Title</td>
-                                <td>
-                                    <span class="badge badge-teal">
-                                        <i class="fas fa-map-marker-alt"></i> @item.Country
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="badge badge-accent">@item.FundingType</span>
-                                </td>
-                                <td>@item.DegreeLevel</td>
-                                <td>
-                                    <span class="badge badge-teal">
-                                        <i class="fas fa-clock"></i> @item.Deadline.ToShortDateString()
-                                    </span>
-                                </td>
-                                <td>
-                                    @if (item.Featured)
-                                    {
-                                        <span class="badge badge-success"><i class="fas fa-star"></i> نعم</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge badge-muted">لا</span>
-                                    }
-                                </td>
-                                <td>
-                                    <div class="actions-cell">
-                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">
-                                            <i class="fas fa-edit"></i> تعديل
-                                        </a>
-                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash"></i> حذف
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            i++;
-                        }
-                    </tbody>
-                </table>
+        </div>
+        <div class="stat-pill">
+            <div class="stat-icon-box amber">⭐</div>
+            <div>
+                <div class="stat-text-label">مميزة</div>
+                <div class="stat-text-value">@Model.Count(s => s.Featured)</div>
             </div>
-
-            <div class="table-footer">
-                <span style="font-size:.82rem; color:var(--text-muted);">
-                    إجمالي <strong>@Model.Count()</strong> منحة مسجلة
-                </span>
+        </div>
+        <div class="stat-pill">
+            <div class="stat-icon-box rose">🌍</div>
+            <div>
+                <div class="stat-text-label">دولة</div>
+                <div class="stat-text-value">@Model.Select(s => s.Country).Distinct().Count()</div>
             </div>
-
         </div>
     </div>
 
-    <script>
-        const searchInput = document.getElementById('searchInput');
-        const rows = document.querySelectorAll('#scholarshipsTable tbody tr');
-        const rowCount = document.getElementById('rowCount');
+    <!-- ── CARDS GRID ── -->
+    <div class="schol-grid" id="scholGrid">
 
-        searchInput.addEventListener('input', function () {
-            const term = this.value.toLowerCase();
-            let visible = 0;
-            rows.forEach(row => {
-                const match = row.textContent.toLowerCase().includes(term);
-                row.style.display = match ? '' : 'none';
-                if (match) visible++;
+        @foreach (var item in Model)
+        {
+            <div class="schol-card @(item.Featured ? "featured" : "")"
+                 data-title="@item.Title.ToLower()"
+                 data-country="@item.Country.ToLower()"
+                 data-funding="@item.FundingType"
+                 data-degree="@item.DegreeLevel">
+
+                @if (item.Featured)
+                {
+                    <div class="featured-badge">⭐ مميزة</div>
+                }
+
+                <div class="card-header">
+                    <div class="country-avatar">🌍</div>
+                    <div class="card-title-group">
+                        <div class="schol-name">@item.Title</div>
+                        <div class="country-name">📍 @item.Country</div>
+                    </div>
+                </div>
+
+                <div class="schol-meta">
+                    <span class="tag tag-degree">@item.DegreeLevel</span>
+                    <span class="tag tag-funding">@item.FundingType</span>
+                    <span class="tag tag-deadline">📅 @item.Deadline.ToShortDateString()</span>
+                </div>
+
+                <p class="schol-desc">@item.ShortDescription</p>
+
+                <div class="card-divider"></div>
+
+                <div class="card-footer">
+                    <div class="deadline-badge">
+                        ⏰ آخر موعد: @item.Deadline.ToShortDateString()
+                    </div>
+                    <a asp-controller="Scholarships"
+                       asp-action="Details"
+                       asp-route-id="@item.Id"
+                       class="btn-details">
+                        التفاصيل <i class="arrow">←</i>
+                    </a>
+                </div>
+
+            </div>
+        }
+
+        <div class="empty-state" id="emptyState" style="display:none;">
+            <div class="empty-icon">🔍</div>
+            <h3>لا توجد نتائج</h3>
+            <p>جرّب البحث بكلمات مختلفة</p>
+        </div>
+
+    </div>
+
+    <script>
+        function filterCards() {
+            const q       = document.getElementById('searchInput').value.toLowerCase().trim();
+            const funding = document.getElementById('fundingFilter').value;
+            const degree  = document.getElementById('degreeFilter').value;
+            const cards   = document.querySelectorAll('.schol-card');
+            let visible   = 0;
+
+            cards.forEach(card => {
+                const matchQ = !q || card.dataset.title.includes(q) || card.dataset.country.includes(q);
+                const matchF = !funding || card.dataset.funding.includes(funding);
+                const matchD = !degree  || card.dataset.degree.includes(degree);
+                const show   = matchQ && matchF && matchD;
+                card.style.display = show ? '' : 'none';
+                if (show) visible++;
             });
-            rowCount.textContent = visible;
-        });
+
+            document.getElementById('emptyState').style.display = visible === 0 ? 'flex' : 'none';
+            document.getElementById('totalCount').textContent = visible;
+        }
     </script>
 
 </body>

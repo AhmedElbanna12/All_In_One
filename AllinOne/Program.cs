@@ -41,8 +41,11 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
 
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    ScholarshipSeeder.Seed(context);
+
     // ??? ??? DbContext
-    var context = services.GetRequiredService<ApplicationDbContext>();
+     context = services.GetRequiredService<ApplicationDbContext>();
 
     // Seed ???? Users ? Messages ???
     await SeedData.InitializeAsync(services);

@@ -153,6 +153,32 @@ namespace AllinOne.Migrations
                     b.ToTable("Offices");
                 });
 
+            modelBuilder.Entity("AllinOne.Models.RequiredDocument", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ScholarshipId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScholarshipId");
+
+                    b.ToTable("RequiredDocuments");
+                });
+
             modelBuilder.Entity("AllinOne.Models.Scholarship", b =>
                 {
                     b.Property<int>("Id")
@@ -162,7 +188,6 @@ namespace AllinOne.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ApplicationSteps")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
@@ -177,7 +202,6 @@ namespace AllinOne.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Eligibility")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Featured")
@@ -196,7 +220,6 @@ namespace AllinOne.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RequiredDocuments")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ShortDescription")
@@ -250,6 +273,102 @@ namespace AllinOne.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("ScholarshipApplications");
+                });
+
+            modelBuilder.Entity("AllinOne.Models.ScholarshipBenefit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ScholarshipId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScholarshipId");
+
+                    b.ToTable("ScholarshipBenefits");
+                });
+
+            modelBuilder.Entity("AllinOne.Models.ScholarshipMajor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ScholarshipId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScholarshipId");
+
+                    b.ToTable("ScholarshipMajors");
+                });
+
+            modelBuilder.Entity("AllinOne.Models.ScholarshipRequirement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ScholarshipId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScholarshipId");
+
+                    b.ToTable("ScholarshipRequirements");
+                });
+
+            modelBuilder.Entity("AllinOne.Models.ScholarshipStipend", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<string>("DegreeLevel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ScholarshipId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScholarshipId");
+
+                    b.ToTable("ScholarshipStipends");
                 });
 
             modelBuilder.Entity("AllinOne.Models.User", b =>
@@ -550,6 +669,17 @@ namespace AllinOne.Migrations
                     b.Navigation("Student");
                 });
 
+            modelBuilder.Entity("AllinOne.Models.RequiredDocument", b =>
+                {
+                    b.HasOne("AllinOne.Models.Scholarship", "Scholarship")
+                        .WithMany("Documents")
+                        .HasForeignKey("ScholarshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Scholarship");
+                });
+
             modelBuilder.Entity("AllinOne.Models.ScholarshipApplication", b =>
                 {
                     b.HasOne("AllinOne.Models.Office", "Office")
@@ -575,6 +705,50 @@ namespace AllinOne.Migrations
                     b.Navigation("Scholarship");
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("AllinOne.Models.ScholarshipBenefit", b =>
+                {
+                    b.HasOne("AllinOne.Models.Scholarship", "Scholarship")
+                        .WithMany("Benefits")
+                        .HasForeignKey("ScholarshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Scholarship");
+                });
+
+            modelBuilder.Entity("AllinOne.Models.ScholarshipMajor", b =>
+                {
+                    b.HasOne("AllinOne.Models.Scholarship", "Scholarship")
+                        .WithMany("Majors")
+                        .HasForeignKey("ScholarshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Scholarship");
+                });
+
+            modelBuilder.Entity("AllinOne.Models.ScholarshipRequirement", b =>
+                {
+                    b.HasOne("AllinOne.Models.Scholarship", "Scholarship")
+                        .WithMany("Requirements")
+                        .HasForeignKey("ScholarshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Scholarship");
+                });
+
+            modelBuilder.Entity("AllinOne.Models.ScholarshipStipend", b =>
+                {
+                    b.HasOne("AllinOne.Models.Scholarship", "Scholarship")
+                        .WithMany("Stipends")
+                        .HasForeignKey("ScholarshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Scholarship");
                 });
 
             modelBuilder.Entity("AllinOne.Models.User", b =>
@@ -670,6 +844,16 @@ namespace AllinOne.Migrations
 
             modelBuilder.Entity("AllinOne.Models.Scholarship", b =>
                 {
+                    b.Navigation("Benefits");
+
+                    b.Navigation("Documents");
+
+                    b.Navigation("Majors");
+
+                    b.Navigation("Requirements");
+
+                    b.Navigation("Stipends");
+
                     b.Navigation("UserScholarships");
                 });
 

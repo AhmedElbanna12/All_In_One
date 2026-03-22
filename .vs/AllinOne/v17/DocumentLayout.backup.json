@@ -1,48 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\projects\\mvc\\AllinOne\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|e:\\projects\\mvc\\allinone\\allinone\\views\\communitychat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|solutionrelative:allinone\\views\\communitychat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|e:\\projects\\mvc\\allinone\\allinone\\hubs\\communitychathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|solutionrelative:allinone\\hubs\\communitychathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|e:\\projects\\mvc\\allinone\\allinone\\controllers\\communitychatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|solutionrelative:allinone\\controllers\\communitychatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|e:\\projects\\mvc\\allinone\\allinone\\seeddata\\seedingdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|solutionrelative:allinone\\seeddata\\seedingdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|e:\\projects\\mvc\\allinone\\allinone\\seeddata\\seedcommunity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|solutionrelative:allinone\\seeddata\\seedcommunity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|e:\\projects\\mvc\\allinone\\allinone\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|solutionrelative:allinone\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|e:\\projects\\mvc\\allinone\\allinone\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|solutionrelative:allinone\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|e:\\projects\\mvc\\allinone\\allinone\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|solutionrelative:allinone\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|e:\\projects\\mvc\\allinone\\allinone\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|solutionrelative:allinone\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|e:\\projects\\mvc\\allinone\\allinone\\seeddata\\seedroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D000EEE3-4A3C-42B1-B5BE-BAEC720932FC}|AllinOne\\AllinOne.csproj|solutionrelative:allinone\\seeddata\\seedroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -50,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -75,136 +34,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CommunityChatHub.cs",
-              "DocumentMoniker": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Hubs\\CommunityChatHub.cs",
-              "RelativeDocumentMoniker": "AllinOne\\Hubs\\CommunityChatHub.cs",
-              "ToolTip": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Hubs\\CommunityChatHub.cs",
-              "RelativeToolTip": "AllinOne\\Hubs\\CommunityChatHub.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAUwE4AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T20:06:37.861Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SeedCommunity.cs",
-              "DocumentMoniker": "E:\\projects\\mvc\\AllinOne\\AllinOne\\SeedData\\SeedCommunity.cs",
-              "RelativeDocumentMoniker": "AllinOne\\SeedData\\SeedCommunity.cs",
-              "ToolTip": "E:\\projects\\mvc\\AllinOne\\AllinOne\\SeedData\\SeedCommunity.cs",
-              "RelativeToolTip": "AllinOne\\SeedData\\SeedCommunity.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAwwBoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T19:45:30.081Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CommunityChatController.cs",
-              "DocumentMoniker": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Controllers\\CommunityChatController.cs",
-              "RelativeDocumentMoniker": "AllinOne\\Controllers\\CommunityChatController.cs",
-              "ToolTip": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Controllers\\CommunityChatController.cs",
-              "RelativeToolTip": "AllinOne\\Controllers\\CommunityChatController.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAcwGYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T19:40:09.811Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SeedingData.cs",
-              "DocumentMoniker": "E:\\projects\\mvc\\AllinOne\\AllinOne\\SeedData\\SeedingData.cs",
-              "RelativeDocumentMoniker": "AllinOne\\SeedData\\SeedingData.cs",
-              "ToolTip": "E:\\projects\\mvc\\AllinOne\\AllinOne\\SeedData\\SeedingData.cs",
-              "RelativeToolTip": "AllinOne\\SeedData\\SeedingData.cs",
-              "ViewState": "AgIAADIAAACA//////8fwD0AAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T19:39:27.736Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Views\\CommunityChat\\Index.cshtml",
-              "RelativeDocumentMoniker": "AllinOne\\Views\\CommunityChat\\Index.cshtml",
-              "ToolTip": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Views\\CommunityChat\\Index.cshtml",
-              "RelativeToolTip": "AllinOne\\Views\\CommunityChat\\Index.cshtml",
-              "ViewState": "AgIAAP8BAAAAAAAAAAAUwBYCAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-03T19:35:38.216Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\projects\\mvc\\AllinOne\\AllinOne\\appsettings.json",
-              "RelativeDocumentMoniker": "AllinOne\\appsettings.json",
-              "ToolTip": "E:\\projects\\mvc\\AllinOne\\AllinOne\\appsettings.json",
-              "RelativeToolTip": "AllinOne\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-03T20:02:37.56Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "AllinOne\\Views\\Home\\Index.cshtml",
-              "ToolTip": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "AllinOne\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAoAAAAgY2ZmZqYowBwAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-03T19:42:27.211Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Program.cs",
-              "RelativeDocumentMoniker": "AllinOne\\Program.cs",
-              "ToolTip": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Program.cs",
-              "RelativeToolTip": "AllinOne\\Program.cs",
-              "ViewState": "AgIAACEAAAAA/v////8AwDEAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T19:35:52.902Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "AllinOne\\Controllers\\HomeController.cs",
-              "ToolTip": "E:\\projects\\mvc\\AllinOne\\AllinOne\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "AllinOne\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAABIPRAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T19:42:22.481Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SeedRoles.cs",
-              "DocumentMoniker": "E:\\projects\\mvc\\AllinOne\\AllinOne\\SeedData\\SeedRoles.cs",
-              "RelativeDocumentMoniker": "AllinOne\\SeedData\\SeedRoles.cs",
-              "ToolTip": "E:\\projects\\mvc\\AllinOne\\AllinOne\\SeedData\\SeedRoles.cs",
-              "RelativeToolTip": "AllinOne\\SeedData\\SeedRoles.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T19:39:26.403Z",
-              "EditorCaption": ""
             }
           ]
         }

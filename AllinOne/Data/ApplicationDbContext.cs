@@ -28,8 +28,16 @@ namespace ScholarshipPlatform.Data
 
         public DbSet<CommunityMember> CommunityMembers => Set<CommunityMember>();
 
+        public DbSet<RequiredDocument> RequiredDocuments => Set<RequiredDocument>();
+        public DbSet<ScholarshipBenefit> ScholarshipBenefits => Set<ScholarshipBenefit>();
+        public DbSet<ScholarshipMajor> ScholarshipMajors => Set<ScholarshipMajor>();
+        public DbSet<ScholarshipRequirement> ScholarshipRequirements => Set<ScholarshipRequirement>();
 
-        
+        public DbSet<ScholarshipStipend> ScholarshipStipends => Set<ScholarshipStipend>();
+
+
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -101,6 +109,11 @@ namespace ScholarshipPlatform.Data
                 .HasOne(sa => sa.Office)
                 .WithMany(o => o.Applications)
                 .HasForeignKey(sa => sa.OfficeId);
+
+
+            modelBuilder.Entity<ScholarshipStipend>()
+    .Property(s => s.Amount)
+    .HasPrecision(10, 2);
         }
     }
 }

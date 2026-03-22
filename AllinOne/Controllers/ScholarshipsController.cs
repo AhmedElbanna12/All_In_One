@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using ScholarshipPlatform.Data;
 
 
-[Authorize(Roles = "Admin")] 
+//[Authorize(Roles = "Admin")] 
 public class ScholarshipsController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -22,6 +22,22 @@ public class ScholarshipsController : Controller
     {
         var scholarships = await _context.Scholarships.ToListAsync();
         return View(scholarships);
+    }
+
+    public IActionResult Details(int id)
+    {
+        var scholarship = _context.Scholarships
+            .Include(s => s.Majors)
+            .Include(s => s.Requirements)
+            .Include(s => s.Documents)
+            .Include(s => s.Benefits)
+            .Include(s => s.Stipends)
+            .FirstOrDefault(s => s.Id == id);
+
+        if (scholarship == null)
+            return NotFound();
+
+        return View(scholarship);
     }
 
     // =========================================
